@@ -24,11 +24,6 @@ conda_activate() {
 }
 alias ca='conda_activate'
 
-# add pyenv to path
-export PATH="/Users/jamesc/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion || {
   # if not found in /usr/local/etc, try the brew --prefix location
   [ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ] && \
@@ -41,10 +36,21 @@ parse_git_branch() {
 }
 
 GIT_PS1_SHOWDIRTYSTATE=true  # add + when there are changes
-export PS1='[\u@\h \e[32m\w\e[33m$(parse_git_branch)]\e[39m $ '
+export PS1='[\e[32m\w\e[33m$(parse_git_branch)]\e[39m $ '
 
 # added by Snowflake SnowSQL installer v1.2
 export PATH=/Applications/SnowSQL.app/Contents/MacOS:$PATH
 
 # added by Snowflake SnowCD installer
 export PATH=/opt/snowflake/snowcd:$PATH
+
+# add pyenv to path
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# add bin to path
+export PATH=$HOME/bin:$PATH
+
