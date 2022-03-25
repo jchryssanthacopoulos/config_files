@@ -1,0 +1,16 @@
+{
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "files.autoSave": "afterDelay",
+    "files.insertFinalNewline": true,
+    "files.autoSaveDelay": 500,
+    "editor.rulers": [
+        120
+    ],
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "explorer.confirmDragAndDrop": false
+}
